@@ -40,7 +40,7 @@ function Form() {
 
   return (
     <form
-      className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md"
+      className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md border border-gray-200"
       onSubmit={handleSubmit}
     >
       <Preferences
