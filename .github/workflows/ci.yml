@@ -19,5 +19,8 @@ jobs:
       - name: Check for type errors
         run: yarn workspace frontend tsc --noEmit
 
+      - name: Run ESLint check
+        run: yarn workspace frontend lint
+
       - name: Run frontend tests
         run: yarn workspace frontend test

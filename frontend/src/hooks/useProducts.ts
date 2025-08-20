@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import getProducts, { Product } from "../services/product.service";
 
 const useProducts = () => {

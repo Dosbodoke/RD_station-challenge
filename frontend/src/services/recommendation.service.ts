@@ -1,5 +1,5 @@
-import type { Product } from "./product.service";
 import type { FormData } from "../hooks/useForm";
+import type { Product } from "./product.service";
 
 const getRecommendations = (
   formData: FormData = {

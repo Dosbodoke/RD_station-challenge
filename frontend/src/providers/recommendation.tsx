@@ -1,7 +1,8 @@
 import { createContext, useContext, useState } from "react";
-import recommendationService from "../services/recommendation.service";
-import type { Product } from "../services/product.service";
+
 import type { FormData } from "../hooks/useForm";
+import type { Product } from "../services/product.service";
+import recommendationService from "../services/recommendation.service";
 
 interface RecommendationContextType {
   recommendations: Product[];

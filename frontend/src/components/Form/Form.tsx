@@ -1,11 +1,12 @@
+import React from "react";
+
+import useForm from "../../hooks/useForm";
+import useProducts from "../../hooks/useProducts";
+import { useRecommendation } from "../../providers/recommendation";
+import { SubmitButton } from "../ui/SubmitButton";
 import { Features } from "./Fields/Features";
 import { Preferences } from "./Fields/Preferences";
 import { RecommendationType } from "./Fields/RecommendationType";
-import { SubmitButton } from "../ui/SubmitButton";
-import useProducts from "../../hooks/useProducts";
-import useForm from "../../hooks/useForm";
-import { useRecommendation } from "../../providers/recommendation";
-import React from "react";
 
 function Form() {
   const { preferences, features, products } = useProducts();
