@@ -1,17 +1,18 @@
-import { useEffect, useState } from 'react';
-import getProducts from '../services/product.service';
+import { useEffect, useState } from "react";
+
+import getProducts, { Product } from "../services/product.service";
 
 const useProducts = () => {
-  const [preferences, setPreferences] = useState([]);
-  const [features, setFeatures] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [preferences, setPreferences] = useState<string[]>([]);
+  const [features, setFeatures] = useState<string[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const products = await getProducts();
-        const allPreferences = [];
-        const allFeatures = [];
+        const allPreferences: string[] = [];
+        const allFeatures: string[] = [];
 
         setProducts(products);
 
@@ -30,7 +31,7 @@ const useProducts = () => {
         setPreferences(allPreferences);
         setFeatures(allFeatures);
       } catch (error) {
-        console.error('Erro ao obter os produtos:', error);
+        console.error("Erro ao obter os produtos:", error);
       }
     };
 

@@ -1,6 +1,8 @@
-import React from 'react';
+import { useRecommendation } from "../../providers/recommendation";
 
-function RecommendationList({ recommendations }) {
+function RecommendationList() {
+  const { recommendations } = useRecommendation();
+
   return (
     <div>
       <h2 className="text-lg font-bold mb-4">Lista de Recomendações:</h2>
