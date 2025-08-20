@@ -16,5 +16,8 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Check for type errors
+        run: yarn workspace frontend tsc --noEmit
+
       - name: Run frontend tests
         run: yarn workspace frontend test
