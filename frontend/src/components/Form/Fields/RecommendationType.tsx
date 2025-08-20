@@ -1,37 +1,51 @@
-import React from "react";
-
+import React, { useState } from "react";
 import Checkbox from "../../ui/Checkbox";
 
 interface RecommendationTypeProps {
   onRecommendationTypeChange: (type: string) => void;
+  selectedRecommendation: string;
 }
 
 export const RecommendationType: React.FC<RecommendationTypeProps> = ({
   onRecommendationTypeChange,
+  selectedRecommendation,
 }) => {
+  const [currentRecomendation, setCurrentRecomendation] = useState(
+    selectedRecommendation
+  );
+
+  const handleRecommendationTypeChange = (type: string) => {
+    setCurrentRecomendation(type);
+    onRecommendationTypeChange(type);
+  };
+
   return (
-    <div className="mb-4">
-      <h2 className="text-lg font-bold mb-2">Tipo de Recomendação:</h2>
-      <div className="flex items-center">
+    <fieldset className="mb-6">
+      <legend className="text-base font-semibold text-gray-900 mb-4">
+        Tipo de Recomendação
+      </legend>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <Checkbox
           type="radio"
           name="recommendationType"
+          label="Produto Único"
+          description="Recomendar o melhor produto."
           value="SingleProduct"
-          onChange={() => onRecommendationTypeChange("SingleProduct")}
-          className="mr-2"
+          checked={currentRecomendation === "SingleProduct"}
+          noCheckmarkIcon
+          onChange={() => handleRecommendationTypeChange("SingleProduct")}
         />
-        <label htmlFor="SingleProduct" className="mr-4">
-          Produto Único
-        </label>
         <Checkbox
           type="radio"
           name="recommendationType"
+          label="Múltiplos Produtos"
+          description="Recomendar uma lista de opções."
           value="MultipleProducts"
-          onChange={() => onRecommendationTypeChange("MultipleProducts")}
-          className="mr-2"
+          checked={currentRecomendation === "MultipleProducts"}
+          noCheckmarkIcon
+          onChange={() => handleRecommendationTypeChange("MultipleProducts")}
         />
-        <label htmlFor="MultipleProducts">Múltiplos Produtos</label>
       </div>
-    </div>
+    </fieldset>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import useForm from "../../hooks/useForm";
 import useProducts from "../../hooks/useProducts";
@@ -13,13 +13,28 @@ function Form() {
   const { formData, handleChange } = useForm({
     selectedPreferences: [],
     selectedFeatures: [],
-    selectedRecommendationType: "",
+    selectedRecommendationType: "MultipleProducts",
   });
 
   const { generateRecommendations } = useRecommendation();
 
+  const [error, setError] = useState(false);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const newErrors = {
+      preferences: formData.selectedPreferences.length === 0,
+      features: formData.selectedFeatures.length === 0,
+    };
+    const allEmpty = Object.values(newErrors).every(Boolean);
+
+    if (allEmpty) {
+      setError(true);
+      return;
+    }
+
+    setError(false);
     generateRecommendations(formData, products);
   };
 
@@ -41,11 +56,12 @@ function Form() {
         }
       />
       <RecommendationType
+        selectedRecommendation={formData.selectedRecommendationType}
         onRecommendationTypeChange={(selected) =>
           handleChange("selectedRecommendationType", selected)
         }
       />
-      <SubmitButton>Obter recomendação</SubmitButton>
+      <SubmitButton error={error}>Obter recomendação</SubmitButton>
     </form>
   );
 }
