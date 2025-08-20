@@ -2,7 +2,7 @@
 
 Este repositório contém minha solução para o teste técnico de desenvolvedor front-end na RD Station.
 
-As intruções do teste estão disponíveis no arquivo [instructions.md](./instructions.md).
+As intruções originais estão disponíveis no arquivo [instructions.md](./instructions.md).
 
 # Como rodar o projeto
 
@@ -11,19 +11,12 @@ As intruções do teste estão disponíveis no arquivo [instructions.md](./instr
   git clone https://github.com/Dosbodoke/RD_station-challenge.git
   ```
 
-2. Acesse o diretório do projeto:
+
+2. Instale as dependências e execute o projeto:
   ```bash
   cd RD_station-challenge
-  ```
-
-3. Instale as dependências e execute o script de instalação:
-  ```bash
   yarn install
   ./install.sh
-  ```
-
-4. Inicie a aplicação:
-  ```bash
   yarn start
   ```
 
