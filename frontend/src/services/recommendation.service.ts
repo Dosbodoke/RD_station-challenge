@@ -1,15 +1,18 @@
+import type { Product } from "./product.service";
+import type { FormData } from "../hooks/useForm";
+
 const getRecommendations = (
-  formData = {
+  formData: FormData = {
     selectedPreferences: [],
     selectedFeatures: [],
-    selectedRecommendationType: '',
+    selectedRecommendationType: "",
   },
-  products
+  products: Product[]
 ) => {
   const {
     selectedPreferences = [],
     selectedFeatures = [],
-    selectedRecommendationType = '',
+    selectedRecommendationType = "",
   } = formData;
 
   // Valida se há dados necessários para fazer recomendações
@@ -49,7 +52,7 @@ const getRecommendations = (
   validProducts.sort((a, b) => b.score - a.score);
 
   // Aplica lógica específica baseada no tipo de recomendação
-  if (selectedRecommendationType === 'SingleProduct') {
+  if (selectedRecommendationType === "SingleProduct") {
     // Para produto único, encontra produtos com a pontuação máxima
     const maxScore = validProducts[0].score;
     const topProducts = validProducts.filter(
@@ -58,7 +61,7 @@ const getRecommendations = (
 
     // Em caso de empate, retorna o último produto (critério 5)
     return [topProducts[topProducts.length - 1]];
-  } else if (selectedRecommendationType === 'MultipleProducts') {
+  } else if (selectedRecommendationType === "MultipleProducts") {
     // Para múltiplos produtos, retorna todos os válidos ordenados por score
     return validProducts;
   }
@@ -66,4 +69,6 @@ const getRecommendations = (
   return [];
 };
 
-export default { getRecommendations };
+const recommendationService = { getRecommendations };
+
+export default recommendationService;

@@ -1,6 +1,6 @@
-import Form from './components/Form/Form';
-import RecommendationList from './components/RecommendationList/RecommendationList';
-import { RecommendationProvider } from './providers/recommendation';
+import Form from "./components/Form/Form";
+import RecommendationList from "./components/RecommendationList/RecommendationList";
+import { RecommendationProvider } from "./providers/recommendation";
 
 function App() {
   return (

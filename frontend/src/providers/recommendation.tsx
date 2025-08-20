@@ -1,17 +1,32 @@
 import { createContext, useContext, useState } from "react";
 import recommendationService from "../services/recommendation.service";
+import type { Product } from "../services/product.service";
+import type { FormData } from "../hooks/useForm";
 
-const RecommendationContext = createContext({
+interface RecommendationContextType {
+  recommendations: Product[];
+  generateRecommendations: (formData: FormData, products: Product[]) => void;
+  clearRecommendations: () => void;
+}
+
+const RecommendationContext = createContext<RecommendationContextType>({
   recommendations: [],
   generateRecommendations: () => {},
   clearRecommendations: () => {},
 });
 
-export const RecommendationProvider = ({ children }) => {
-  const [recommendations, setRecommendations] = useState([]);
+export const RecommendationProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const [recommendations, setRecommendations] = useState<Product[]>([]);
 
-  const generateRecommendations = (formData, products) => {
-    const recommendations = recommendationService.getRecommendations(formData, products);
+  const generateRecommendations = (formData: FormData, products: Product[]) => {
+    const recommendations = recommendationService.getRecommendations(
+      formData,
+      products
+    );
     setRecommendations(recommendations);
   };
 

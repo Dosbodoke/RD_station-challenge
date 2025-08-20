@@ -69,6 +69,7 @@ describe('recommendationService', () => {
   test('Retorna o último match em caso de empate para SingleProduct', () => {
     const formData = {
       selectedPreferences: ['Automação de marketing', 'Integração com chatbots'],
+      selectedFeatures: [],
       selectedRecommendationType: 'SingleProduct',
     };
 
